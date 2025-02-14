@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day, Shamsiya ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            color: #d63384;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        .message {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #c2185b;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .love-letter {
+            cursor: pointer;
+            font-size: 1.2em;
+            color: red;
+        }
+        .quiz-container {
+            margin-top: 20px;
+        }
+        .timeline {
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+            border-left: 3px solid #d63384;
+            padding-left: 20px;
+        }
+        .timeline div {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+        }
+        @keyframes floating-hearts {
+            0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+            50% { transform: translateY(-50vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 75%, 20% 100%, 0% 30%);
+            animation: floating-hearts 8s linear infinite;
+            opacity: 0.8;
+        }
+    </style>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+        function openLoveLetter() {
+            document.getElementById("love-message").classList.remove("hidden");
+        }
+        function checkQuizAnswer() {
+            let answer = document.getElementById("quiz-answer").value.toLowerCase();
+            if (answer === "shamsiya") {
+                alert("Correct! You are my forever love! ❤️");
+            } else {
+                alert("Oops! Try again, my love!");
+            }
+        }
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 10000);
+            }, 600);
+        }
+        window.onload = createHearts;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Valentine's Day, Shamsiya! ❤️</h1>
+        <button onclick="showSection('love-letter')">Love Letter 💌</button>
+        <button onclick="showSection('timeline')">Love Story Timeline 📖</button>
+        <button onclick="showSection('quiz')">Valentine’s Quiz ❤️</button>
+        <button onclick="showSection('gallery')">Personal Gallery 💕</button>
+        
+        <div id="love-letter" class="section active">
+            <p class="love-letter" onclick="openLoveLetter()">Click to open your love letter 💌</p>
+            <p id="love-message" class="hidden">
+                Meri pyaari Shamsiya,<br><br>
+                Jab se tum meri zindagi mein aayi ho, tab se sab kuch aur bhi khoobsurat lagne laga hai. Tum meri duniya ho, meri khushi ho. Every moment with you feels magical, jaise koi sapna ho jo main kabhi todna nahi chahta.<br><br>
+                Tumhari muskurahat meri sabse badi kamzori hai, aur tumhari aankhein woh raaz hain jo main har din padna chahta hoon. With you, every day feels like Valentine’s Day, kyunki tumhara saath hi mere dil ki sabse badi khushi hai.<br><br>
+                No matter what happens, main hamesha tumhare saath rahunga, har musibat se tumhe bachane ke liye, aur har khushi mein tumhare saath muskane ke liye. You are my today, my tomorrow, and my forever.<br><br>
+                I love you beyond words, meri jaan! ❤️
+            </p>
+        </div>
+        
+        <div id="timeline" class="section">
+            <div class="timeline">
+                <div><strong>💑 First Meeting:</strong> The moment I saw you, my heart knew you were special.</div>
+                <div><strong>❤️ First Date:</strong> A magical day at a cafe, that I will never forget.</div>
+                <div><strong>🎉 Special Memory:</strong> Every day with you is a new adventure.</div>
+            </div>
+        </div>
+        
+        <div id="quiz" class="section">
+            <div class="quiz-container">
+                <p>What is the name of the person I love the most? 💖</p>
+                <input type="text" id="quiz-answer">
+                <button onclick="checkQuizAnswer()">Submit Answer</button>
+            </div>
+        </div>
+        
+        <div id="gallery" class="section">
+            <p>Our Beautiful Memories:</p>
+            <img src="https://source.unsplash.com/200x200/?love,couple" alt="Memory 1">
+            <img src="https://source.unsplash.com/200x200/?romance,valentine" alt="Memory 2">
+            <img src="https://source.unsplash.com/200x200/?heart,affection" alt="Memory 3">
+        </div>
+    </div>
+</body>
+</html>
